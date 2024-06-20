@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { RutinasServiceService } from 'src/app/services/services/rutinas-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RutinasService } from 'src/app/services/rutinas.service';
 
 @Component({
   selector: 'crear-rutinas',
@@ -10,15 +10,65 @@ import { RutinasServiceService } from 'src/app/services/services/rutinas-service
 })
 export class CrearRutinasComponent {
   rutinaForm: FormGroup;
-
+  id: string | null;
+  titulo = 'Registrar Rutina';
+  imagen: File | null = null;
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private _rutinasSerives: RutinasServiceService) {
+    private _rutinasSerives: RutinasService,
+    private aRouter: ActivatedRoute
+  ) {
     this.rutinaForm = this.fb.group({
+      nombre: [''],
+      descripcion: [''],
+      lunes: [''],
+      martes: [''],
+      miercoles: [''],
+      jueves: [''],
+      viernes: [''],
+      sabado: [''],
+      domingo: ['']
     });
-  }
-  crearRutina() {
+    this.id = this.aRouter.snapshot.paramMap.get('id');
     
+  }
+  createRutina() {
+    const formData = new FormData();
+    formData.append('nombre', this.rutinaForm.get('nombre')?.value)
+    formData.append('descripcion', this.rutinaForm.get('descripcion')?.value)
+    formData.append('lunes', this.rutinaForm.get('lunes')?.value)
+    formData.append('martes', this.rutinaForm.get('martes')?.value)
+    formData.append('miercoles', this.rutinaForm.get('miercoles')?.value)
+    formData.append('jueves', this.rutinaForm.get('jueves')?.value)
+    formData.append('viernes', this.rutinaForm.get('viernes')?.value)
+    formData.append('sabado', this.rutinaForm.get('sabado')?.value)
+    formData.append('domingo', this.rutinaForm.get('domingo')?.value)
+    if(this.imagen) {
+      formData.append('imagen', this.imagen);
+    }
+    if ('Edit Rutina' === this.titulo) {
+      if(this.id != null) {
+        this._rutinasSerives.deleteRutina(this.id).subscribe(data =>{
+          alert('Rutina eliminada con exito!');
+          this.router.navigate(['/rutinas'])
+          this.rutinaForm.reset();
+        }, error => {
+          alert(error);
+        })
+      }
+    } else {
+      this._rutinasSerives.createRutina(formData).subscribe(data => {
+        alert('Rutina agregada con exito!');
+        this.router.navigate(['/rutinas'])
+      }, error => {
+        this.rutinaForm.reset();
+        alert(error);
+      })
+    }
+  }
+  onFileChange(event: any): void {
+    [this.imagen] = event.target.files
+    console.info(this.imagen)
   }
 }

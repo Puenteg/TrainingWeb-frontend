@@ -13,22 +13,81 @@
             <div class="col-lg-10">
                 <div class="card" style="width: auto">
                     <div class="card-body text-center">
-                        <h3>Crear Dietas</h3>
-                        <form class="mt-3" [formGroup]="rutinaForm" (ngSubmit)="crearRutina()">
+                        <h3>Crear Rutina</h3>
+                        <form class="mt-3" [formGroup]="rutinaForm" (ngSubmit)="createRutina()">
                             <div class="mb-3">
-                                <label for="marca">Nombre de la dieta</label>
+                                <label for="marca">Nombre de la rutina</label>
                                 <input type="text" formControlName="nombre" class="form-control"
-                                    placeholder="Nombre de la Dieta">
+                                    placeholder="Nombre de la Rutina">
                             </div>
                             <div class="mb-3">
-                                <label for="marca">Descripcion de la Dieta</label>
+                                <label for="marca">Descripcion de la rutina</label>
                                 <textarea formControlName="descripcion" class="form-control"
                                     placeholder="Agrega un descripción"></textarea>
                             </div>
                             <div class="mb-3">
-                                <label for="marca">Imagen o Video</label>
-                                <input type="file" id="imageDieta" formControlName="image" class="form-control"
-                                    placeholder="Selecciona la imagen de la dieta">
+                                <label for="marca">Imagen</label>
+                                <input type="file" id="imageRutina" formControlName="image" class="form-control"
+                                    (change)="onFileChange($event)" placeholder="Selecciona la imagen de la Rutina">
+                            </div>
+                            <div class="">
+                                <label for="marca">Llena la tabla para cada ejericio en la semana</label>
+                                <table class="tablaRutina">
+                                    <tbody>
+                                        <tr>
+                                            <th class="rowDay"> Día </th>
+                                        </tr>
+                                        <tr>
+                                            <td class="rowDay"> Lunes </td>
+                                            <td>
+                                                <textarea formControlName="lunes" class="form-control"
+                                                    placeholder="Rutina del lunes"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="rowDay"> Martes </td>
+                                            <td>
+                                                <textarea formControlName="martes" class="form-control"
+                                                    placeholder="Rutina del martes"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="rowDay"> Miercoles </td>
+                                            <td>
+                                                <textarea formControlName="miercoles" class="form-control"
+                                                    placeholder="Rutina del miercoles"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="rowDay"> Jueves </td>
+                                            <td>
+                                                <textarea formControlName="jueves" class="form-control"
+                                                    placeholder="Rutina del jueves"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="rowDay"> Viernes </td>
+                                            <td>
+                                                <textarea formControlName="viernes" class="form-control"
+                                                    placeholder="Rutina del viernes"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="rowDay"> Sabado </td>
+                                            <td>
+                                                <textarea formControlName="sabado" class="form-control"
+                                                    placeholder="Rutina del sabado"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="rowDay"> Domingo </td>
+                                            <td>
+                                                <textarea formControlName="domingo" class="form-control"
+                                                    placeholder="Rutina del domigo"></textarea>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="mb-3">
                                 <button type="button" id="btnCancelar" style="color: red;"><a
