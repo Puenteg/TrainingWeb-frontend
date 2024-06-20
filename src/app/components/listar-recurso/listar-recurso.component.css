@@ -18,7 +18,29 @@ h2 {
     text-align: center;
     color: white;
 }
+.keto {
+    margin: 60px;
+    position: relative;
+}
+.keto article {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
 
+}
+
+.keto img {
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+}
+
+.keto figure {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 40vh;
+}
 .cont{
     padding-left: 0;
     padding-right: 0;
@@ -41,7 +63,7 @@ h2 {
     Article (Rutinas)
     **************************/
 article {
-    --img-scale: 1.001;
+    --img-scale: 1.00;
     --title-color: black;
     --link-icon-translate: -20px;
     --link-icon-opacity: 0;
@@ -121,8 +143,8 @@ article:has(:hover, :focus) {
 }
 
 /************************ 
-  Generic layout (demo looks)
-  **************************/
+Generic layout (demo looks)
+**************************/
 
 *,
 *::before,
@@ -145,6 +167,7 @@ article:has(:hover, :focus) {
     padding-top: 5pc;
     padding-bottom: 5pc;
     border: 0px;
+    margin: 0;
 }
 
 @media screen and (max-width: 960px) {

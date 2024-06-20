@@ -10,7 +10,7 @@
 }
 
 .btn {
-  width: auto;
+  width: 400px;
   overflow: hidden;
   margin: 1pc;
   font-size: 1.5rem;
@@ -169,6 +169,13 @@ body{
     .social_media{
       display: none !important;
     }
+  }
+  
+  img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    column-span: all;
   }
 
 .carousel-inner img{
@@ -420,3 +427,58 @@ textarea:hover {
   color: #fff;
   transition: 0.5s;
 }
+
+
+/*Efecto Transparente, FADE-OUT A IMAGEN USANDO HOVER PARA APARECER Y DESAPARECER*/
+.btna {
+  justify-items: self-end;
+  position: fixed;
+  z-index: 100;
+  top: 86vh;
+  margin-bottom: 1px;
+  margin-left: 92vw;
+  width: 5vw;
+  height: auto;
+  opacity: 0;
+  animation-name: fade;
+  animation-duration: 5s;
+  border-radius: 100%;
+}
+
+.btna:hover {
+  opacity: 100%;
+  animation-name: fade-out;
+  animation-duration: 1s;
+  animation-delay: 2s;
+}
+
+@keyframes fade-out {
+  100% {
+    opacity: 0%;
+  }
+
+  50% {
+    opacity: 50%;
+  }
+
+  0% {
+    opacity: 100%;
+  }
+}
+
+
+@keyframes fade {
+  100% {
+    opacity: 0%;
+  }
+
+  50% {
+    opacity: 50%;
+  }
+
+  0% {
+    opacity: 100%;
+  }
+}
+
+/*Fin ANIMACION BTN FADE-OUT*/

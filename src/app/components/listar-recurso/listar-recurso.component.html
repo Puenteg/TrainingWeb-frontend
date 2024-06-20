@@ -12,14 +12,18 @@
     <div class="centrar">
       <div class="card">
         <section class="articles" [hidden]="!rutinas">
-          <article>
+          <article *ngFor="let rutinas of listRutinas">
             <div class="article-wrapper">
               <figure>
-                <img src="../../../assets/tetones.jpg" alt="" />
+                <img [id]="'image' + rutinas._id" alt="imagen de rutina.jpg" />
               </figure>
               <div class="article-body">
-                <h2>Rutinas Tronco Súperior</h2>
-                <a (click)="muestra()" class="read-more">
+                <h2>{{rutinas.nombre}}</h2>
+                <p>{{rutinas.descripcion}}
+                </p>
+                <br>
+                <h6>Autor: <strong>{{(nombrePerfil | async)?.nombre}}</strong></h6>
+                <a (click)="mostrar(rutinas)" class="read-more">
                   Ver rutina<span class="sr-only">about this is some title</span>
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd"
@@ -31,8 +35,60 @@
             </div>
           </article>
         </section>
+        <br>
+        <div *ngIf="listRutina" class="keto">
+          <article>
+            <div class="article-wrapper">
+              <figure>
+                <img [id]="'imagen' + mostrarRutina._id" alt="imagen de rutina.jpg" />
+              </figure>
+              <div class="article-body">
+                <h2>{{ mostrarRutina.nombre }}</h2>
+                <p>
+                  {{ mostrarRutina.descripcion }}
+                </p>
+                <table>
+                  <tbody>
+                    <tr>
+                      <th> Día </th>
+                    </tr>
+                    <tr>
+                      <td> Lunes </td>
+                      <td> {{ mostrarRutina.lunes }} </td>
+                    </tr>
+                    <tr>
+                      <td> Martes </td>
+                      <td> {{ mostrarRutina.martes }} </td>
+                    </tr>
+                    <tr>
+                      <td> Miercoles </td>
+                      <td> {{ mostrarRutina.miercoles }} </td>
+                    </tr>
+                    <tr>
+                      <td> Jueves </td>
+                      <td> {{ mostrarRutina.jueves }} </td>
+                    </tr>
+                    <tr>
+                      <td> Viernes </td>
+                      <td> {{ mostrarRutina.viernes }} </td>
+                    </tr>
+                    <tr>
+                      <td> Sabado </td>
+                      <td> {{ mostrarRutina.sabado }} </td>
+                    </tr>
+                    <tr>
+                      <td> Domingo </td>
+                      <td> {{ mostrarRutina.domingo }} </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <button class="button-31" (click)="rutinas=true" (click)="listRutina=false">Cerrar</button>
+          </article>
+        </div>
       </div>
-      <article [hidden]="!listRutina">
+      <!--       <article [hidden]="!listRutina">
         <figure>
           <img src="../../../assets/tetones.jpg" alt="" />
         </figure>
@@ -111,7 +167,7 @@
           </ul>
         </div>
         <button class="button-31" (click)="listRutina=false" (click)="rutinas=true">Cerrar</button>
-      </article>
+      </article> -->
     </div>
   </div>
 </body>
@@ -119,60 +175,6 @@
   <button class="btn">
     <a routerLink="/mapa-sitio">Mapa del Sitio</a>
   </button>
-  <!--   <div class="mapaSitio" [hidden]="!mapaSitio">
-    <button (click)="cerrarMapa()" class="btn" style="width: 5pc;">
-      ╳
-    </button>
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <ul>
-              <li>
-                <a routerLink="/inicio">Inicio</a>
-              </li>
-              <li>
-                <a routerLink="/app-login">Sesion</a>
-              </li>
-              <li>
-                <a routerLink="/dietas">Dietas</a>
-              </li>
-            </ul>
-          </td>
-          <td>
-            <ul>
-              <li>
-                <a routerLink="/rutinas">Rutinas</a>
-              </li>
-              <li>
-                <a routerLink="/trac">Trac</a>
-              </li>
-              <li>
-                <a routerLink="/profesionales">Profesionales</a>
-              </li>
-            </ul>
-          </td>
-          <td>
-            <ul>
-              <li>
-                <h3>Atención al Cliente</h3>
-              </li>
-              <li>
-                <a href="">Ayuda</a>
-              </li>
-              <li>
-                <a href="">Contactanos</a>
-              </li>
-              <li>
-                <a href="">Politicas</a>
-              </li>
-            </ul>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-  </div> -->
   <ul class="social-icon">
     <li class="social-icon__item"><a class="social-icon__link"
         href="https://www.facebook.com/profile.php?id=61556960667724" target="_blank">
