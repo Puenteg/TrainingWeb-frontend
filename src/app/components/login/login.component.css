@@ -200,7 +200,13 @@ button:hover{
     border-radius: 5px;
     box-shadow: 0 0 5px #e3d617, 0 0 25px #e3d617, 0 0 50px #e3d617,0 0 100px #e3d617;
 }
-
+button a{
+    color: #fff;
+    text-decoration: none;
+}
+button a:hover{
+    color: #18181b;
+}
 .error{
     color: #be1212;    
 }
