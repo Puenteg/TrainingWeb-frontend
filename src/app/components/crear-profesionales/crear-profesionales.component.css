@@ -1,0 +1,133 @@
+body{
+    background-color: #202024;
+    min-height: 90vh;
+    max-height: auto;
+}
+
+*{
+    color: #fff;
+}
+
+h1{
+    text-align: center;
+}
+
+form{
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: #18181b;
+    padding: 2pc;
+    border-radius: 10px;
+}
+
+form label{
+    font-weight: bolder;
+}
+
+form input{
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn {
+    width: auto;
+    overflow: hidden;
+    margin: 1pc;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    background-color: #e3d617;
+}
+
+.btn a {
+    color: #18181b;
+}
+
+.btn a:hover {
+    color: #fff;
+}
+
+.btn img {
+    width: 30%;
+    height: auto;
+}
+
+.btn img:hover {
+    filter: opacity(0.5) drop-shadow(0 0 0 white);
+}
+
+.btn:hover {
+    text-shadow: 1px 1px 6px #fff;
+    transform: scale(1.1);
+    /* Escala 10% más grande al pasar el cursor */
+    font-size: 1.4em;
+    transition: all 0.2s ease;
+    color: white;
+
+    & #ibtn {
+        transition: all 0.2s ease;
+        transform: scale(1.2);
+    }
+
+}
+
+/* MIGAS DE PAN */
+
+.migaPanPadre {
+    position: relative;
+}
+
+.migaPan {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
+ul.breadcrumb {
+    padding: 8px 16px;
+    list-style: none;
+    background-color: none;
+}
+
+ul.breadcrumb li {
+    display: inline;
+}
+
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: white;
+    content: "/\00a0";
+}
+
+ul.breadcrumb a:link,
+ul.breadcrumb a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+ul.breadcrumb li a.active {
+    color: #d1c515;
+    font-weight: bold;
+}
+
+ul.breadcrumb li a.active:hover {
+    color: #e3d617;
+    font-weight: bold;
+}
+
+h5 {
+    color: #fff;
+}
+
+textarea {
+    border-radius: 0px;
+    border: 0px;
+}
+
+textarea:hover {
+    background: #18181b;
+    color: #fff;
+    transition: 0.5s;
+}

@@ -1,0 +1,64 @@
+<div class="migaPanPadre">
+    <div class="migaPan">
+        <ul class="breadcrumb">
+            <li><a routerLink="/rutinas">Rutinas</a></li>
+            <li><a class="active" routerLink="/crear-rutinas">Crear Rutinas</a></li>
+        </ul>
+    </div>
+</div>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card" style="width: auto">
+                    <div class="card-body text-center">
+                        <h3>Crear Dietas</h3>
+                        <form class="mt-3" [formGroup]="rutinaForm" (ngSubmit)="crearRutina()">
+                            <div class="mb-3">
+                                <label for="marca">Nombre de la dieta</label>
+                                <input type="text" formControlName="nombre" class="form-control"
+                                    placeholder="Nombre de la Dieta">
+                            </div>
+                            <div class="mb-3">
+                                <label for="marca">Descripcion de la Dieta</label>
+                                <textarea formControlName="descripcion" class="form-control"
+                                    placeholder="Agrega un descripción"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="marca">Imagen o Video</label>
+                                <input type="file" id="imageDieta" formControlName="image" class="form-control"
+                                    placeholder="Selecciona la imagen de la dieta">
+                            </div>
+                            <div class="mb-3">
+                                <button type="button" id="btnCancelar" style="color: red;"><a
+                                        style="text-decoration: none;color: red;"
+                                        routerLink="/rutinas">Cancelar</a></button>
+                                <button type="submit" id="aceptar" type="submit" style="color: #fff;">Aceptar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer class="footer">
+    <div class="btn">
+        <a routerLink="/mapa-sitio">Mapa del Sitio</a>
+    </div>
+    <ul class="social-icon">
+        <li class="social-icon__item"><a class="social-icon__link"
+                href="https://www.facebook.com/profile.php?id=61556960667724" target="_blank">
+                <img src="../../../../assets/facebook.png" alt="">
+            </a></li>
+        <li class="social-icon__item"><a class="social-icon__link"
+                href="https://www.instagram.com/training_web4083/?hl=es" target="_blank">
+                <img src="../../../../assets/instagram.png" alt="">
+            </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <img src="../../../../assets/atencion.png">
+            </a></li>
+    </ul>
+    <p>&copy;2024 Training Web | Todos los derechos reservados</p>
+</footer>

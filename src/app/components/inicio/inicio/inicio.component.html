@@ -1,0 +1,94 @@
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+  integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+  integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
+<body>
+  <div class="contenedorTxt"><!--
+    <div class="contenedorTxtChild">
+      <img src="../../../../assets/logo.png" alt="">
+    </div> -->
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="..\assets\casa2.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="..\assets\casa1.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="..\assets\casa2.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="..\assets\casa1.png" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <div class="texto">
+      </div>
+    </div>
+  </div>
+  <div class="redes-sociales">
+    <ul>
+      <li>
+        <a href="https://www.facebook.com/profile.php?id=61556960667724" target="_blank"><img
+            src="../../../../assets/facebook.png" alt=""></a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/training_web4083/?hl=es" target="_blank"><img
+            src="../../../../assets/instagram.png" alt=""></a>
+      </li>
+      <li>
+        <a href=""><img src="../../../../assets/atencion.png"></a>
+      </li>
+    </ul>
+
+  </div>
+  <div class="contenedor">
+
+    <button *appRole="['admin', 'nutriologo', 'usuario']" type="button" class="btn" routerLink="/dietas" id="dos">
+      <img src="../../../../assets/dieta.png">
+      <br>
+      Dietas
+    </button>
+    <button *appRole="['admin','entrenador', 'usuario']" type="button" class="btn" routerLink="/rutinas" id="uno">
+      <img src="../../../../assets/entrenamiento.png">
+      <br>
+      Rutinas
+    </button>
+    <button *appRole="['admin', 'nutriologo']" class type="button" class="btn" routerLink="/trac" id="tres">
+      <img src="../../../../assets/trac.png">
+      <br>
+      Trac
+    </button>
+    <button *appRole="['admin','entrenador', 'nutriologo', 'usuario']" class type="button" class="btn"
+      routerLink="/profesionales" id="tres">
+      <img src="../../../../assets/profesional.png">
+      <br>
+      Profesionales
+    </button>
+  </div>
+  <footer class="footer">
+    <button class="btn">
+      <a routerLink="/mapa-sitio">Mapa del Sitio</a>
+    </button>
+    <!--     <div class="mapaSitio" [hidden]="!mapaSitio">
+      <button (click)="cerrar()" class="btn" style="width: 5pc;">
+        ╳
+      </button>
+    </div> -->
+    <ul class="social-icon">
+      <li class="social-icon__item"><a class="social-icon__link"
+          href="https://www.facebook.com/profile.php?id=61556960667724" target="_blank">
+          <img src="../../../../assets/facebook.png" alt="">
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link"
+          href="https://www.instagram.com/training_web4083/?hl=es" target="_blank">
+          <img src="../../../../assets/instagram.png" alt="">
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <img src="../../../../assets/atencion.png">
+        </a></li>
+    </ul>
+    <p>&copy;2024 Training Web | Todos los derechos reservados</p>
+  </footer>
+</body>

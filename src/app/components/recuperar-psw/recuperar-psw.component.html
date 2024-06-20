@@ -1,0 +1,31 @@
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card" style="width: auto">
+                    <div class="card-body text-center">
+                        <h3>Recupera Contraseña</h3>
+                        <form class="mt-3" (ngSubmit)="recuperaContrasenia()">
+                            <div class="mb-3">
+                                <label for="marca">Correo electrónico</label>
+                                <input type="email" id="correoRecupera" class="form-control"
+                                    placeholder="Correo Electrónico" required="true">
+                                <div class="text-danger">
+                                    <!-- *ngIf="empleadoForm.get('email')?.hasError('required') && empleadoForm.get('email')?.touched" -->
+                                    <span>Ingresar <strong>CORREO ELECTRÓNICO</strong> </span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" id="aceptar">Aceptar</button>
+                                <br>
+                                <hr>
+                                <p>Tengo una cuenta</p>
+                                <a class="volver" routerLink="/app-login">Iniciar Sesion</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

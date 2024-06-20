@@ -1,0 +1,84 @@
+<body>
+    <h1>Gestión de Usuarios</h1>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card" style="width: auto">
+                    <div class="card-body text-center">
+                        <h3>Crear Usuarios</h3>
+                        <form class="mt-3">
+                            <div class="mb-3">
+                                <label for="marca">Nombre Usuario</label>
+                                <input type="text" formControlName="nombre" class="form-control"
+                                    placeholder="Nombre de la Dieta">
+                            </div>
+                            <div class="mb-3">
+                                <label for="marca">Contraseña</label>
+                                <textarea formControlName="descripcion" class="form-control"
+                                    placeholder="Agrega un descripción"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="marca">Rol</label>
+                                <br>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>
+                                                <p>Básico</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>
+                                                <p>Profesional</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <button type="submit" style="color: #fff;">Agregar</button>
+                        </form>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="card" style="width: auto">
+                    <div class="card-body text-center">
+                        <h3>Usuarios Registrados</h3>
+                        <form class="mt-3">
+                        </form>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</body>
+<footer class="footer">
+    <button class="btn">
+        <a routerLink="/mapa-sitio">Mapa del Sitio</a>
+    </button>
+    <ul class="social-icon">
+        <li class="social-icon__item"><a class="social-icon__link"
+                href="https://www.facebook.com/profile.php?id=61556960667724" target="_blank">
+                <img src="../../../../assets/facebook.png" alt="">
+            </a></li>
+        <li class="social-icon__item"><a class="social-icon__link"
+                href="https://www.instagram.com/training_web4083/?hl=es" target="_blank">
+                <img src="../../../../assets/instagram.png" alt="">
+            </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <img src="../../../../assets/atencion.png">
+            </a></li>
+    </ul>
+    <p>&copy;2024 Training Web | Todos los derechos reservados</p>
+</footer>

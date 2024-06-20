@@ -1,0 +1,131 @@
+<body>
+  <div class="migaPanPadre">
+    <div class="migaPan">
+      <ul class="breadcrumb">
+        <li><a class="active" routerLink="/dietas">Dietas</a></li>
+        <li><a routerLink="/crear-dietas">Crear Dietas</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="center">
+    <div class="card">
+      <section class="articles" [hidden]="!Dietas">
+        <article *ngFor="let dietas of listDietas">
+          <div class="article-wrapper">
+            <figure>
+              <img [id]="'image' + dietas._id" alt="imagen de dieta.jpg" />
+            </figure>
+            <div class="article-body">
+              <h2>{{dietas.nombre}}</h2>
+              <p>{{dietas.descripcion}}
+              </p>
+              <br>
+              <h6>Autor: <strong>{{dietas.autor}}</strong></h6>
+              <a (click)="mostrar(dietas)" class="read-more">
+                Mostrar<span class="sr-only">about this is some title</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd" />
+                </svg>
+              </a>
+              <button class="btn-delete" *appRole="['admin', 'nutriologo']"
+                (click)="eliminar(dietas._id)">Eliminar</button>
+            </div>
+          </div>
+        </article>
+      </section>
+      <br>
+      <div *ngIf="listDieta" id="keto">
+        <article>
+          <div class="article-wrapper">
+            <figure>
+              <img [id]="'imagen' + mostrarDieta._id" alt="imagen de dieta.jpg" />
+            </figure>
+            <div class="article-body">
+              <h2>{{ mostrarDieta.nombre }}</h2>
+              <p>
+                {{ mostrarDieta.descripcion }}
+              </p>
+              <h3> {{ mostrarDieta.beneficios }} </h3>
+              <br>
+              <p> {{ mostrarDieta.contribucion }} </p>
+              <table class="tablaKeto">
+                <tbody>
+                  <tr>
+                    <th> Día </th>
+                    <th> Desayuno </th>
+                    <th> Comida </th>
+                    <th> Cena </th>
+                  </tr>
+                  <tr>
+                    <td> Lunes </td>
+                    <td> {{ mostrarDieta.lunesDesayuno }} </td>
+                    <td> {{ mostrarDieta.lunesComida }} </td>
+                    <td> {{ mostrarDieta.lunesCena }} </td>
+                  </tr>
+                  <tr>
+                    <td> Martes </td>
+                    <td> {{ mostrarDieta.martesDesayuno }} </td>
+                    <td> {{ mostrarDieta.martesComida }} </td>
+                    <td> {{ mostrarDieta.martesCena }} </td>
+                  </tr>
+                  <tr>
+                    <td> Miercoles </td>
+                    <td> {{ mostrarDieta.miercolesDesayuno }} </td>
+                    <td> {{ mostrarDieta.miercolesComida }} </td>
+                    <td> {{ mostrarDieta.miercolesCena }} </td>
+                  </tr>
+                  <tr>
+                    <td> Jueves </td>
+                    <td> {{ mostrarDieta.juevesDesayuno }} </td>
+                    <td> {{ mostrarDieta.juevesComida }} </td>
+                    <td> {{ mostrarDieta.juevesCena }} </td>
+                  </tr>
+                  <tr>
+                    <td> Viernes </td>
+                    <td> {{ mostrarDieta.viernesDesayuno }} </td>
+                    <td> {{ mostrarDieta.viernesComida }} </td>
+                    <td> {{ mostrarDieta.viernesCena }} </td>
+                  </tr>
+                  <tr>
+                    <td> Sabado </td>
+                    <td> {{ mostrarDieta.sabadoDesayuno }} </td>
+                    <td> {{ mostrarDieta.sabadoComida }} </td>
+                    <td> {{ mostrarDieta.sabadoCena }} </td>
+                  </tr>
+                  <tr>
+                    <td> Domingo </td>
+                    <td> {{ mostrarDieta.domingoDesayuno }} </td>
+                    <td> {{ mostrarDieta.domingoComida }} </td>
+                    <td> {{ mostrarDieta.domingoCena }} </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <button class="button-31" (click)="Dietas=true" (click)="listDieta=false">Cerrar</button>
+        </article>
+      </div>
+    </div>
+  </div>
+</body>
+<footer class="footer">
+  <button class="btn">
+    <a routerLink="/mapa-sitio">Mapa del Sitio</a>
+  </button>
+  <ul class="social-icon">
+    <li class="social-icon__item"><a class="social-icon__link"
+        href="https://www.facebook.com/profile.php?id=61556960667724" target="_blank">
+        <img src="../../../../assets/facebook.png" alt="">
+      </a></li>
+    <li class="social-icon__item"><a class="social-icon__link" href="https://www.instagram.com/training_web4083/?hl=es"
+        target="_blank">
+        <img src="../../../../assets/instagram.png" alt="">
+      </a></li>
+    <li class="social-icon__item"><a class="social-icon__link" href="#">
+        <img src="../../../../assets/atencion.png">
+      </a></li>
+  </ul>
+  <p>&copy;2024 Training Web | Todos los derechos reservados</p>
+</footer>

@@ -1,0 +1,123 @@
+body{
+    margin: auto;
+}
+.centrar {
+    position: relative;
+}
+
+.contenido {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+h1{
+    text-align: center;
+    font-size: 5rem;
+    font-weight: bolder;
+}
+h2{
+    text-align: center;
+}
+.imagen{
+    display: block;
+    margin: auto;
+    padding-top: 2pc;
+}
+a {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+a::after {
+    color: red;
+}
+
+a:hover:before {
+    color: red;
+}
+
+a:hover {
+    color: #e3d617;
+}
+p{
+    text-align: center;
+}
+
+header {
+    margin: 0;
+    padding: 0;
+    background-color: #18181b;
+    height: auto;
+}
+
+.navbar-collapse {
+    height: auto;
+    padding: 10px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    margin: 0;
+}
+
+.navbar {
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-expand-lg {
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+#perfil {
+    display: block;
+    position: absolute;
+    right: 0;
+}
+
+button {
+    background-color: #1f2329;
+    width: auto;
+    padding: 0.5pc;
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bolder;
+    border: 0px;
+}
+
+button:hover {
+    color: #fff;
+    border-radius: 5px;
+    background-color: #fff023;
+    box-shadow: 0 0 5px #e3d617,
+        0 0 25px #e3d617,
+        0 0 50px #e3d617,
+        0 0 100px #e3d617;
+    transition: 0.3s;
+}
+
+a span:nth-child{
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #e3d617);
+    animation: btn-anim4 1s linear infinite;
+    animation-delay: 0.75s;
+}

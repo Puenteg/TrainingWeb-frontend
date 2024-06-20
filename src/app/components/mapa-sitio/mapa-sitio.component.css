@@ -1,0 +1,133 @@
+
+body{
+    background-color: #23272e;
+    height: 65vh;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+.tw{
+    color: #23272e;
+}
+a:hover{
+    text-shadow: 1px 1px 6px #fff;
+    padding: 0.2pc;
+    margin: 0.5pc;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: bolder;
+    transform: translateY(-10px);
+}
+
+h3{
+    text-align: center;
+    background-color: #e3d617;
+    padding: 0.5pc;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+h3:hover{
+    background-color: #fff021;
+    cursor: default;
+}
+h4 {
+    text-align: center;
+    background-color: #e3d617;
+    padding: 0.6pc;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    font-weight: bolder;
+}
+
+h4:hover {
+    background-color: #fff021;
+    cursor: default;
+}
+
+.container{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.row{
+    text-align: center;
+    margin: 1pc;
+}
+.col{
+    display: block;
+    position: relative;
+    align-items: center;
+}
+/**********************************************************************/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+.footer {
+    position: relative;
+    width: 100%;
+    background: #18181b;
+    min-height: 100px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.social-icon,
+.menu {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
+.social-icon__item,
+.menu__item {
+    list-style: none;
+}
+
+.social-icon__link {
+    font-size: 2rem;
+    color: #fff;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.social-icon__link:hover {
+    transform: translateY(-10px);
+}
+
+.menu__link {
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+    text-decoration: none;
+    opacity: 0.75;
+    font-weight: 300;
+}
+
+.menu__link:hover {
+    opacity: 1;
+}
+
+.footer p {
+    color: #fff;
+    margin: 15px 0 10px 0;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.footer img {
+    width: 2pc;
+}
+
+/*******************************************************************/

@@ -1,0 +1,450 @@
+body{
+    background-color: #202024;
+}
+
+#seleccion{
+    color: #004b8d;
+}
+
+#Noseleccion{
+    color: black;
+}
+
+th{
+    color: #004b8d;
+}
+
+h2 {
+    text-align: center;
+    color: white;
+}
+
+.cont{
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.fas {
+    margin-left: 7px;
+}
+
+.centrar{
+    display:grid;
+    position: relative;
+    margin: auto;
+    width: auto;
+}
+
+    /************************ 
+    Article (Rutinas)
+    **************************/
+article {
+    --img-scale: 1.001;
+    --title-color: black;
+    --link-icon-translate: -20px;
+    --link-icon-opacity: 0;
+    position: relative;
+    border-radius: 16px;
+    box-shadow: none;
+    background: #fff;
+    transform-origin: center;
+    transition: all 0.4s ease-in-out;
+    overflow: hidden;
+}
+
+article a::after {
+    position: absolute;
+    inset-block: 0;
+    inset-inline: 0;
+    cursor: pointer;
+    content: "";
+}
+
+article h2 {
+    margin: 0 0 18px 0;
+    font-size: 1.9rem;
+    letter-spacing: 0.06em;
+    color: var(--title-color);
+    transition: color 0.3s ease-out;
+}
+
+figure {
+    margin: 0;
+    padding: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+article img {
+    max-width: 100%;
+    transform-origin: center;
+    transform: scale(var(--img-scale));
+    transition: transform 0.4s ease-in-out;
+}
+
+.article-body {
+    padding: 24px;
+    width: auto;
+}
+
+article a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #28666e;
+}
+
+article a:focus {
+    outline: 1px dotted #28666e;
+}
+
+article a .icon {
+    min-width: 24px;
+    width: 24px;
+    height: 24px;
+    margin-left: 5px;
+    transform: translateX(var(--link-icon-translate));
+    opacity: var(--link-icon-opacity);
+    transition: all 0.3s;
+}
+
+/* using the has() relational pseudo selector to update our custom properties */
+article:has(:hover, :focus) {
+    --img-scale: 1.1;
+    --title-color: #28666e;
+    --link-icon-translate: 0;
+    --link-icon-opacity: 1;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+        rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+/************************ 
+  Generic layout (demo looks)
+  **************************/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.articles {
+    display: grid;
+    max-width: auto;
+    margin-inline: auto;
+    padding-inline: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    width: fit-content;
+    background-color:#202024;
+    padding-top: 5pc;
+    padding-bottom: 5pc;
+    border: 0px;
+}
+
+@media screen and (max-width: 960px) {
+    article {
+        container: card/inline-size;
+    }
+
+    .article-body p {
+        display: none;
+    }
+}
+
+@container card (min-width: 380px) {
+    .article-wrapper {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        gap: 16px;
+    }
+
+    .article-body {
+        padding-left: 0;
+    }
+
+    figure {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    figure img {
+        height: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+    }
+}
+
+.sr-only:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+.button-31 {
+    background-color: #e3d617;
+    border-radius: 4px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 0;
+    max-width: none;
+    min-height: 44px;
+    min-width: 10px;
+    outline: none;
+    overflow: hidden;
+    padding: 9px 20px 8px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+}
+
+.button-31:hover,
+.button-31:focus {
+    opacity: .75;
+}
+#troncoSup{
+    text-align: center;
+}
+
+#troncoSup ul li{
+    padding: 2pc;
+    list-style-type: none
+}
+
+#troncoSup img{
+    width: auto;
+    height: auto;
+    display: block;
+    position: relative;
+    margin: auto;
+}
+
+/**********************************************************************/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+.footer {
+    position: relative;
+    width: 100%;
+    background: #23272e;
+    min-height: 100px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.social-icon,
+.menu {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
+.social-icon__item,
+.menu__item {
+    list-style: none;
+}
+
+.social-icon__link {
+    font-size: 2rem;
+    color: #fff;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.social-icon__link:hover {
+    transform: translateY(-10px);
+}
+
+.menu__link {
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+    text-decoration: none;
+    opacity: 0.75;
+    font-weight: 300;
+}
+
+.menu__link:hover {
+    opacity: 1;
+}
+
+.footer p {
+    color: #fff;
+    margin: 15px 0 10px 0;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.footer img {
+    width: 2pc;
+}
+
+/*******************************************************************/
+/* footer */
+.mapaSitio {
+    color: #18181b;
+    font-weight: bolder;
+    width: auto;
+}
+
+table {
+    width: 80vw;
+    border-collapse: separate;
+    border-spacing: 1pc;
+    margin: 2pc;
+}
+li{
+    list-style: none;
+}
+table tbody td {
+    border-radius: 10px;
+    height: 3pc;
+    width: 6pc;
+    text-align: justify;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+table tbody td:hover {
+    cursor: pointer;
+}
+
+table tbody td a {
+    font-display: none;
+    color: #fff;
+}
+
+table tbody td li {
+    padding: 0.5pc;
+}
+
+table tbody td a:hover {
+    font-display: none;
+    color: #fff;
+    text-shadow: 1px 1px 6px #fff;
+    font-size: 1rem;
+}
+
+h3 {
+    color: #fff;
+    font-weight: bolder;
+}
+.btn {
+    width: auto;
+    overflow: hidden;
+    margin: 1pc;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    background-color: #e3d617;
+}
+.btn a {
+    text-decoration: none;
+    color: #18181b;
+}
+
+.btn a:hover {
+    color: #fff;
+    font-size: 1.4rem;
+}
+.btn:hover {
+    text-shadow: 1px 1px 6px #fff;
+    transform: scale(1.1);
+    /* Escala 10% más grande al pasar el cursor */
+    font-size: 1em;
+    transition: all 0.2s ease;
+    color: white;
+
+    & #ibtn {
+        transition: all 0.2s ease;
+        transform: scale(1.2);
+    }
+
+}
+/* MIGAS DE PAN */
+
+.migaPanPadre {
+    position: relative;
+}
+
+.migaPan {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
+ul.breadcrumb {
+    padding: 8px 16px;
+    list-style: none;
+    background-color: none;
+}
+
+ul.breadcrumb li {
+    display: inline;
+}
+
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: white;
+    content: "/\00a0";
+}
+
+ul.breadcrumb a:link,
+ul.breadcrumb a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+ul.breadcrumb li a.active {
+    color: #d1c515;
+    font-weight: bold;
+}
+
+ul.breadcrumb li a.active:hover {
+    color: #e3d617;
+    font-weight: bold;
+}
+
+h5 {
+    color: #fff;
+}
+
+textarea {
+    border-radius: 0px;
+    border: 0px;
+}
+
+textarea:hover {
+    background: #18181b;
+    color: #fff;
+    transition: 0.5s;
+}
