@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Recurso } from 'src/app/models/recurso';
 import { RecursoService } from 'src/app/services/recurso.service';
 
@@ -21,7 +20,6 @@ export class CrearRecursoComponent {
   profesionales = true;
   constructor(private fb: FormBuilder,
     private router: Router,
-    private toastr: ToastrService,
     private _recursoService: RecursoService,
     private aRouter: ActivatedRoute
   ) {
@@ -80,7 +78,6 @@ export class CrearRecursoComponent {
     if (this.id !== null) {
       //editar recurso;
       this._recursoService.editarRecurso(this.id, RECURSO).subscribe(data => {
-        this.toastr.info('El recurso fue actualizado con éxito', 'Recurso Actualizado');
         this.router.navigate(['/listar-recurso']);
       }, error => {
         console.log(error);
@@ -90,7 +87,6 @@ export class CrearRecursoComponent {
       //agregar recurso
       console.log(RECURSO);
       this._recursoService.guardarRecurso(RECURSO).subscribe(data => {
-        this.toastr.success('El recurso fue registrado con éxito', 'Recurso Registrado');
         this.router.navigate(['/listar-recurso']);
       }, error => {
         console.log(error);

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RecursoService } from './../../services/recurso.service';
-import { ToastrService } from 'ngx-toastr';
 import { Recurso } from 'src/app/models/recurso';
 
 @Component({
@@ -32,7 +31,7 @@ export class ListarRecursoComponent implements OnInit{
 
   filter: string = '';
 
-  constructor(private _recursoService: RecursoService, private toastr: ToastrService) {}
+  constructor(private _recursoService: RecursoService) {}
 
   ngOnInit(): void {
     this.obtenerRecursos();
@@ -50,7 +49,6 @@ export class ListarRecursoComponent implements OnInit{
 
   eliminarRecurso(id:any) {
     this._recursoService.eliminarRecurso(id).subscribe(data => {
-      this.toastr.error('El recurso fue eliminado con exito');
       this.obtenerRecursos();
     }, error => {
       console.log(error);
@@ -64,7 +62,7 @@ export class ListarRecursoComponent implements OnInit{
     muestraMapa() {
     this.mapaSitio = true;
     }
-  
+
   cerrarMapa() {
     this.mapaSitio = false;
   }
