@@ -1,4 +1,4 @@
 export const enviroment = {
   urlBackEnd: 'https://trainingweb-backend.onrender.com',
-  urlFrontEnd: 'http://localhost:4200'
+  urlFrontEnd: 'https://trainingweb-frontend.onrender.com/'
 }
