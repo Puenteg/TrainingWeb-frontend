@@ -14,12 +14,9 @@ export class HttpInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.info('Aplica Headers genericos', enviroment.urlFrontEnd)
-    const reqClone = req.clone({withCredentials: true});
+    const reqClone = req.clone();
     reqClone.headers
       .append('Content-Type', 'application/json')
-      .append('Origin', `${enviroment.urlFrontEnd}`)
-      .append('Access-Control-Allow-Origin', `${enviroment.urlFrontEnd}`)
-      .append('Access-Control-Allow-Credentials', 'true');
 
     return next.handle(reqClone).pipe(
       catchError((error) => {
