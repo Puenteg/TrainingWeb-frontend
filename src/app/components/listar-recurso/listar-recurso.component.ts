@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RecursoService } from './../../services/recurso.service';
-import { ToastrService } from 'ngx-toastr';
-import { Recurso } from 'src/app/models/recurso';
 import { RutinasService } from 'src/app/services/rutinas.service';
 import { enviroment } from 'src/enviroments/enviroment';
 import { Observable } from 'rxjs';
@@ -19,7 +16,7 @@ export class ListarRecursoComponent implements OnInit{
   listRutinas : any [] = [];
   mostrarRutina: any;
   nombrePerfil: Observable<DataUser>;
-  constructor(private loginService: LoginService, private _rutinasService: RutinasService, private toastr: ToastrService) {
+  constructor(private loginService: LoginService, private _rutinasService: RutinasService) {
     this.caragaRutinas();
     this.nombrePerfil = loginService.getDataUser();
   }
