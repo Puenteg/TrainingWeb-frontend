@@ -1,6 +1,9 @@
 {
   "name": "training-web-frontend",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=16 <17"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
