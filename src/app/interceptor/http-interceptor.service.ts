@@ -13,11 +13,12 @@ export class HttpInterceptorService implements HttpInterceptor {
   constructor(private loginService: LoginService, private router: Router) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.info('Aplica Headers genericos')
+    console.info('Aplica Headers genericos', enviroment.urlFrontEnd)
     const reqClone = req.clone({withCredentials: true});
     reqClone.headers
       .append('Content-Type', 'application/json')
-      .append('origin', `${enviroment.urlFrontEnd}`)
+      .append('Origin', `${enviroment.urlFrontEnd}`)
+      .append('Access-Control-Allow-Origin', `${enviroment.urlFrontEnd}`)
       .append('Access-Control-Allow-Credentials', 'true');
 
     return next.handle(reqClone).pipe(
