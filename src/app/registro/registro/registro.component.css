@@ -5,14 +5,14 @@ form {
     max-width: auto;
     margin: 0 auto;
   }
-  
+
   /* Style form labels */
   label {
     display: block;
     margin-bottom: 0.5rem;
     color: #333;
   }
-  
+
   /* Style form inputs */
   input,
   select {
@@ -21,34 +21,34 @@ form {
     margin-bottom: 1rem;
     box-sizing: border-box;
   }
-  
+
   /* Style error messages */
   .text-danger {
     color: #d9534f;
   }
-  
+
   /* Style the submit buttons */
   .btn-secondary {
     background-color: #6c757d;
     border: #6c757d;
   }
-  
+
   .btn-success {
     background-color: #8dc640;
     border: #8dc640;
   }
-  
+
   /* Add hover effects to buttons */
   .btn:hover {
     filter: brightness(90%);
     transition: 0.3s;
   }
-  
+
   /* Add spacing between buttons */
   .btn {
     margin-right: 0.5rem;
   }
-  
+
   /* Center the form on larger screens */
   @media (min-width: 768px) {
     form {
@@ -126,4 +126,14 @@ button:hover {
 p{
   font-size: 1.1rem;
   color: #7f7f7f;
+}
+
+.div-radio-button {
+  display: inline-flex;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.form-check-label {
+  margin-left: 0.5em;
 }

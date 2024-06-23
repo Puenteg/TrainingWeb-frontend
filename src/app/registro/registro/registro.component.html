@@ -16,13 +16,22 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="marca">contraseña</label>
+                                <label for="marca">Contraseña</label>
                                 <input type="password" formControlName="contraseña" class="form-control"
                                     placeholder="Ingresa una contraseña" minlength="8" maxlength="20">
                                 <div class="text-danger"
                                     *ngIf="empleadoForm.get('contraseña')?.hasError('required') && empleadoForm.get('contraseña')?.touched">
                                     <span>La contraseña <strong>ES OBLIGATORIA</strong></span>
                                 </div>
+                            </div>
+                            <div class="mb-3">
+                              <label for="marca">Confirma tu contraseña</label>
+                              <input type="password" formControlName="contraseña2" class="form-control"
+                                  placeholder="Ingresa una contraseña" minlength="8" maxlength="20">
+                              <div class="text-danger"
+                                  *ngIf="empleadoForm.get('contraseña2')?.hasError('required') && empleadoForm.get('contraseña2')?.touched">
+                                  <span>La contraseña <strong>ES OBLIGATORIA</strong></span>
+                              </div>
                             </div>
                             <div class="mb-3">
                                 <label for="marca">Apellidos</label>
@@ -53,6 +62,21 @@
                                     *ngIf="empleadoForm.get('email')?.hasError('required') && empleadoForm.get('email')?.touched">
                                     <span>Ingresar <strong>CORREO ELECTRÓNICO</strong> </span>
                                 </div>
+                            </div>
+                            <div class="mb-3">
+                              <label for="rol">Seleccione el rol que desea tener</label>
+                              <div class="div-radio-button">
+                                <input type="radio" class="input" name="rol" id="idRolNutriologo" value="nutriologo" formControlName="rol">
+                                <label class="form-check-label">Nutriologo</label>
+                              </div>
+                              <div class="div-radio-button">
+                                <input type="radio" class="input" name="rol" id="idRolEntrenador" value="entrenador" formControlName="rol">
+                                <label class="form-check-label">Entrenador</label>
+                              </div>
+                              <div class="div-radio-button">
+                                <input type="radio" class="input" name="rol" id="idRolUsuario" value="usuario" formControlName="rol">
+                                <label class="form-check-label">Usuario</label>
+                              </div>
                             </div>
                             <div class="mb-3">
                             </div>

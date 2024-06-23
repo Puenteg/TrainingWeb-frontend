@@ -26,10 +26,11 @@ export class RegistroComponent implements OnInit {
     this.empleadoForm = this.fb.group({
       nombre: ['', Validators.required],
       contraseña: ['', Validators.required,],
+      contraseña2: ['', Validators.required,],
       apellido: ['', Validators.required],
       // telefono: ['', [Validators.required, Validators.pattern('[0-9]{10,12}')]],
       email: ['', Validators.required],
-      // estatus: ['', Validators.required],
+      rol: [null, Validators.required],
     });
     this.id = this.aRouter.snapshot.paramMap.get('id')
   }
@@ -71,22 +72,28 @@ export class RegistroComponent implements OnInit {
       return;
     }
 
+    if(!(this.empleadoForm.get('contraseña')?.value && this.empleadoForm.get('contraseña')?.value === this.empleadoForm.get('contraseña2')?.value)) {
+      alert('Las contraseñas ingresadas no coinciden')
+      return
+    }
+
     const empleado = {
       nombre: this.empleadoForm.get('nombre')?.value,
       contraseña: this.empleadoForm.get('contraseña')?.value,
       apellido: this.empleadoForm.get('apellido')?.value,
       telefono: '',
       email: this.empleadoForm.get('email')?.value,
-      estatus: this.empleadoForm.get('estatus')?.value
+      estatus: this.empleadoForm.get('estatus')?.value,
+      roles: [this.empleadoForm.get('rol')?.value]
     }
+    console.info('Empleado: ', empleado)
     this._empleadoService.crearEmpleado(empleado).subscribe(
       (data) => {
         alert('Usuario agregado con exito!');
         this.router.navigate(['/app-login']);
       },
       (error) => {
-        this.empleadoForm.reset();
-        alert(error);
+        alert(error?.error?.message);
       }
     );
 
