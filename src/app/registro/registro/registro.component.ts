@@ -89,7 +89,7 @@ export class RegistroComponent implements OnInit {
     console.info('Empleado: ', empleado)
     this._empleadoService.crearEmpleado(empleado).subscribe(
       (data) => {
-        alert('Usuario agregado con exito!');
+        alert('Se ha enviado un correo de verificación.');
         this.router.navigate(['/app-login']);
       },
       (error) => {
