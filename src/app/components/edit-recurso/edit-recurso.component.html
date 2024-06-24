@@ -24,11 +24,10 @@
                 <textarea formControlName="descripcion" class="form-control"
                   placeholder="Agrega un descripción"></textarea>
               </div>
-              <!--               <div class="mb-3">
+                            <div class="mb-3">
                 <label for="marca">Autor de la Dieta</label>
-                <input type="text" formControlName="autor" class="form-control"
-                  placeholder="Ingresa el Autor de la dieta">
-              </div> -->
+                <input type="text" formControlName="autor" style="background-color: gray; align-content: center;" readonly class="form-control">
+              </div>
               <div class="mb-3">
                 <label for="marca">Contribucion</label>
                 <input type="text" formControlName="contribucion" class="form-control"
@@ -162,7 +161,7 @@
                     routerLink="/dietas">Cancelar</a></button>
                 <button id="aceptar" type="submit" style="color: #fff;">Aceptar</button>
               </div>
-              <h5><strong>Autor de la dieta: </strong>{{(nombrePerfil | async)?.nombre}}</h5>
+              <!-- <h5><strong>Autor de la dieta: </strong>{{(nombrePerfil | async)?.nombre}}</h5> -->
             </form>
           </div>
         </div>

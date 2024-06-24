@@ -18,7 +18,7 @@ export class LoginComponent{
   constructor(private loginService: LoginService, private router: Router, private fb: FormBuilder) {
     this.$isLogin = loginService.isLogin();
     this.formLogin = this.fb.group({
-      username: ['', []],
+      usuario: ['', []],
       pwd: ['', []],
       recaptchaToken: ['', Validators.required]
     })

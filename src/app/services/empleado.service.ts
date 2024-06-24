@@ -22,7 +22,7 @@ export class EmpleadoService {
     return this.http.delete(this.url + id);
   }
 
-  crearEmpleado(empleado : Empleado): Observable<any>{
+  crearEmpleado(empleado : any): Observable<any>{
     return this.http.post(this.url, empleado);
   }
 

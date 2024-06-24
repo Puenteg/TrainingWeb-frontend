@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { Dietas } from 'src/app/models/dietas';
 import { DietasServiceService } from 'src/app/services/dietas-service.service';
 import { DataUser, LoginService } from 'src/app/services/login.service';
@@ -25,7 +25,7 @@ export class EditRecursoComponent {
     private aRouter: ActivatedRoute,
     private loginService: LoginService
   ) {
-    
+
     this.nombrePerfil = loginService.getDataUser();
 
     this.dietaForm = this.fb.group({
@@ -54,6 +54,9 @@ export class EditRecursoComponent {
       domingoDesayuno: [''],
       domingoComida: [''],
       domingoCena: [''],
+    });
+    loginService.getDataUser().pipe(take(1)).subscribe((next) => {
+      this.dietaForm.get('autor')?.patchValue(next.usuario)
     });
     this.id = this.aRouter.snapshot.paramMap.get('id');
   }
