@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Empleado } from 'src/app/models/empleado';
 import { EmpleadoService } from 'src/app/services/empleado.service';
+import { RegularExpressionLiteral } from 'typescript';
 
 @Component({
   selector: 'app-registro',
@@ -67,15 +68,24 @@ export class RegistroComponent implements OnInit {
   }
 
   crearEmpleado() {
-    if(this.empleadoForm.invalid) {
+    if (this.empleadoForm.invalid) {
       alert('Los datos del usuario son incorrectos')
       return;
     }
 
-    if(!(this.empleadoForm.get('contraseña')?.value && this.empleadoForm.get('contraseña')?.value === this.empleadoForm.get('contraseña2')?.value)) {
+    if (!(this.empleadoForm.get('contraseña')?.value && this.empleadoForm.get('contraseña')?.value === this.empleadoForm.get('contraseña2')?.value)) {
       alert('Las contraseñas ingresadas no coinciden')
       return
     }
+    /*//Validacion de caracteres especiales
+    const myregex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/;
+        if (myregex.test(this.empleadoForm.get('contraseña')?.value)) {
+          alert("Esta contraseña es valida");
+          return true;
+        } else {
+          alert("La contraseña debe contener al menos una mayuscula y un caracter especial");
+          return false;
+        } */
 
     const empleado = {
       nombre: this.empleadoForm.get('nombre')?.value,
@@ -85,19 +95,22 @@ export class RegistroComponent implements OnInit {
       email: this.empleadoForm.get('email')?.value,
       estatus: this.empleadoForm.get('estatus')?.value,
       roles: [this.empleadoForm.get('rol')?.value]
+
     }
-    console.info('Empleado: ', empleado)
+
+    console.info('Empleado: ', empleado);
+
     this._empleadoService.crearEmpleado(empleado).subscribe(
       (data) => {
-        alert('Se ha enviado un correo de verificación.');
+        alert('Se ha enviado un correo de verificación. Favor de verificar tu bandeja de entrada');
         this.router.navigate(['/app-login']);
       },
       (error) => {
         alert(error?.error?.message);
       }
     );
-
   }
+
 
 
   // crearEmpleado() {
