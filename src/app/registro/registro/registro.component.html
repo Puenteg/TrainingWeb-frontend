@@ -63,18 +63,6 @@
                                     <span>La contraseña <strong>ES OBLIGATORIA</strong></span>
                                 </div> -->
                             </div>
-                            <!-- <div class="mb-3">
-                                <label for="marca">Número de Teléfono</label>
-                                <input type="text" formControlName="telefono" class="form-control"
-                                    placeholder="Ingresar número de Teléfono" maxlength="10">
-                                <div class="text-danger"
-                                    *ngIf="empleadoForm.get('telefono')?.hasError('required') && empleadoForm.get('telefono')?.touched">
-                                    <span>Ingresar <strong>NÚMERO DE TELÉFONO</strong></span>
-                                </div>
-                                <div class="text-danger" *ngIf="empleadoForm.get('telefono')?.hasError('pattern')">
-                                    <span>El número de teléfono debe contener solo números</span>
-                                </div>
-                            </div> -->
                             <div class="mb-3">
                                 <label for="rol">Seleccione el rol que desea tener</label>
                                 <div class="div-radio-button">
@@ -95,6 +83,32 @@
                             </div>
                             <div class="mb-3">
                             </div>
+                            <ng-container *ngIf="empleadoForm.get('rol')?.value === 'entrenador' || empleadoForm.get('rol')?.value === 'nutriologo'; then profesional;">
+                            </ng-container>
+                            <ng-template #profesional >
+                              <div class="mb-3">
+                                  <label for="marca">Número de Teléfono</label>
+                                  <input type="text" formControlName="telefono" class="form-control"
+                                      placeholder="Ingresar número de Teléfono" maxlength="10" required="true">
+                              </div>
+                              <div class="mb-3">
+                                <label for="marca">Descripción Corta</label>
+                                <input type="text" formControlName="descripcionCorta" class="form-control"
+                                    placeholder="Ingresar descripción corta" maxlength="50">
+                              </div>
+                              <div class="mb-3">
+                                <label for="marca">Descripción</label>
+                                <input type="text" formControlName="descripcion" class="form-control"
+                                    placeholder="Ingresar descripción corta" maxlength="150">
+                              </div>
+                              <div class="mb-3">
+                                <label for="marca">Imagen</label>
+                                <input type="file" (change)="onFileChange($event)" class="form-control"
+                                    placeholder="Seleccione la imagen...">
+                              </div>
+                            </ng-template>
+
+
                             <div class="mb-3">
                                 <button type="submit" id="aceptar" type="submit">Aceptar</button>
                                 <br>

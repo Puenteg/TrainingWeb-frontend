@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { Empleado } from '../models/empleado';
 import { enviroment } from 'src/enviroments/enviroment';
 
@@ -10,6 +10,7 @@ import { enviroment } from 'src/enviroments/enviroment';
 export class EmpleadoService {
   url = `${enviroment.urlBackEnd}/api/empleados/`;
   url2 = `${enviroment.urlBackEnd}/api/departamento/`;
+  urlProfesionales = `${enviroment.urlBackEnd}/api/profesionales/`;
 
 
   constructor(private http: HttpClient) { }
@@ -24,6 +25,14 @@ export class EmpleadoService {
 
   crearEmpleado(empleado : any): Observable<any>{
     return this.http.post(this.url, empleado);
+  }
+
+  crearProfesional(formData: any): Observable<any> {
+    return this.http.post(this.urlProfesionales, formData);
+  }
+
+  getProfesionales(): Promise<any> {
+    return firstValueFrom(this.http.get(this.urlProfesionales));
   }
 
   obtenerEmpleado(id: string): Observable<any>{
