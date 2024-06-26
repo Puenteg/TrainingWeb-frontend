@@ -13,7 +13,8 @@ export class AppComponent {
   perfil = true;
   $isLogin;
   opcionPerfil = false;
-  nombrePerfil: Observable<DataUser>;
+  nombrePerfil: Observable<any>;
+  isPerfilVisible = false;
 
   constructor(private loginService: LoginService, private router: Router) {
     this.$isLogin = loginService.isLogin();
@@ -32,6 +33,13 @@ export class AppComponent {
     this.opcionPerfil = false;
   }
 
+  showPerfil() {
+    this.isPerfilVisible = true;
+  }
+
+  hiddenPerfil() {
+    this.isPerfilVisible = false;
+  }
 
 
 }

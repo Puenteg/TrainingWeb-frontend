@@ -22,7 +22,7 @@
                 <p>{{rutinas.descripcion}}
                 </p>
                 <br>
-                <h6>Autor: <strong>{{(nombrePerfil | async)?.nombre}}</strong></h6>
+                <h6>Autor: <strong>{{ rutinas.autor }}</strong></h6>
                 <a (click)="mostrar(rutinas)" class="read-more">
                   Ver rutina<span class="sr-only">about this is some title</span>
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
@@ -31,6 +31,10 @@
                       clip-rule="evenodd" />
                   </svg>
                 </a>
+                <div *appRole="['admin', 'entrenador']">
+                  <button class="btn-delete" *ngIf="coincideAutorConUser(rutinas.autor)"
+                    (click)="eliminar(rutinas._id)">Eliminar</button>
+                </div>
               </div>
             </div>
           </article>

@@ -18,6 +18,7 @@ export class RegistroComponent implements OnInit {
   departamentos: { nombre: string }[] = []; // Ajusta el tipo según la estructura real de tus objetos de departamento
   gerents: { gerente: string }[] = []; // Ajusta el tipo según la estructura real de tus objetos de departamento
   captchaResolved = false;
+  imagen: File | null = null;
 
   constructor(private fb: FormBuilder,
     private router: Router,
@@ -25,13 +26,22 @@ export class RegistroComponent implements OnInit {
     private aRouter: ActivatedRoute) {
 
     this.empleadoForm = this.fb.group({
+      usuario: ['', Validators.required],
       nombre: ['', Validators.required],
       contraseña: ['', Validators.required,],
       contraseña2: ['', Validators.required,],
       apellido: ['', Validators.required],
-      // telefono: ['', [Validators.required, Validators.pattern('[0-9]{10,12}')]],
+      telefono: ['', []],
       email: ['', Validators.required],
       rol: [null, Validators.required],
+      descripcionCorta: [null],
+      descripcion: [null]
+    });
+    this.empleadoForm.valueChanges.subscribe({
+      next: (value) => {
+        const myregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/;
+        console.info(value.contraseña + ': ' + myregex.test(value.contraseña));
+      }
     });
     this.id = this.aRouter.snapshot.paramMap.get('id')
   }
@@ -77,24 +87,40 @@ export class RegistroComponent implements OnInit {
       alert('Las contraseñas ingresadas no coinciden')
       return
     }
-    /*//Validacion de caracteres especiales
-    const myregex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/;
-        if (myregex.test(this.empleadoForm.get('contraseña')?.value)) {
-          alert("Esta contraseña es valida");
-          return true;
-        } else {
-          alert("La contraseña debe contener al menos una mayuscula y un caracter especial");
-          return false;
-        } */
+    const mensajesErrorContrasena = this.validaContrasenaSegura(this.empleadoForm.get('contraseña')?.value);
+    if(mensajesErrorContrasena.length > 0) {
+      alert (`${mensajesErrorContrasena[0]}`)
+      return ;
+    }
+    //Validacion de caracteres especiales
+    // const myregex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/;
+    // if (myregex.test(this.empleadoForm.get('contraseña')?.value)) {
+    //   alert('Esta contraseña es valida');
+    //   return true;
+    // } else {
+    //   alert(
+    //     'La contraseña debe contener al menos una mayuscula y un caracter especial'
+    //   );
+    //   return false;
+    // }
 
+    if(this.empleadoForm.get('rol')?.value === 'entrenador' || this.empleadoForm.get('rol')?.value === 'nutriologo') {
+      this.saveProfesional();
+    } else {
+      this.saveUsuario();
+    }
+  }
+
+  saveUsuario() {
     const empleado = {
+      usuario: this.empleadoForm.get('usuario')?.value,
       nombre: this.empleadoForm.get('nombre')?.value,
       contraseña: this.empleadoForm.get('contraseña')?.value,
       apellido: this.empleadoForm.get('apellido')?.value,
       telefono: '',
       email: this.empleadoForm.get('email')?.value,
       estatus: this.empleadoForm.get('estatus')?.value,
-      roles: [this.empleadoForm.get('rol')?.value]
+      roles: [this.empleadoForm.get('rol')?.value],
 
     }
 
@@ -111,7 +137,39 @@ export class RegistroComponent implements OnInit {
     );
   }
 
+  saveProfesional() {
+    const formData = new FormData();
+    formData.append('usuario', this.empleadoForm.get('usuario')?.value);
+    formData.append('nombre', this.empleadoForm.get('nombre')?.value);
+    formData.append('contraseña', this.empleadoForm.get('contraseña')?.value);
+    formData.append('apellido', this.empleadoForm.get('apellido')?.value);
+    formData.append('telefono', this.empleadoForm.get('telefono')?.value);
+    formData.append('email', this.empleadoForm.get('email')?.value);
+    formData.append('roles', this.empleadoForm.get('rol')?.value);
+    formData.append('descripcionCorta', this.empleadoForm.get('descripcionCorta')?.value);
+    formData.append('descripcion', this.empleadoForm.get('descripcion')?.value);
+    formData.append('imagen', this.empleadoForm.get('email')?.value);
 
+    if(this.imagen) {
+      formData.append('imagen', this.imagen);
+    }
+    console.info('Empleado: ', formData);
+
+    this._empleadoService.crearProfesional(formData).subscribe(
+      (data) => {
+        alert('Se ha enviado un correo de verificación. Favor de verificar tu bandeja de entrada');
+        this.router.navigate(['/app-login']);
+      },
+      (error) => {
+        alert(error?.error?.message);
+      }
+    );
+  }
+
+  onFileChange(event: any): void {
+    [ this.imagen ] = event.target.files
+    console.info(this.imagen)
+  }
 
   // crearEmpleado() {
   //   const EMPLEADO: Empleado = {
@@ -169,4 +227,39 @@ export class RegistroComponent implements OnInit {
   resolved(captchaResponse: string) {
     console.log(`Resolved captcha with response: ${captchaResponse}`);
   }
+
+  validaContrasenaSegura(contrasena: string): string[] {
+    console.info(contrasena)
+    let retorno = [];
+    const baseMessage = 'La contraseña ingresada no es segura ya que ';
+
+    const regexMayus = /[ABCDEFGHIJKLMNÑOPQRSTUVWXYZ]/;
+    const regexMinus = /[abcdefghijklmnñopqrstuvwxyz]/;
+    const regexNumeros = /[0123456789]/;
+    const regexCaracterEspecial = /[`^{`^``¡¨´¨!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?¿~¬]/;
+    if(contrasena.length < 8 || contrasena.length > 20) {
+      retorno.push(`La contraseña debe tener una longitud entre 8 y 20 caracteres`)
+    }
+    if(!regexMayus.test(contrasena)) {
+      retorno.push(`${baseMessage}no cuenta con mayusculas`);
+    }
+    if(!regexMinus.test(contrasena)) {
+      retorno.push(`${baseMessage}no cuenta con minusculas`);
+    }
+    if(!regexNumeros.test(contrasena)) {
+      retorno.push(`${baseMessage}no cuenta con numeros`);
+    }
+    if(!regexCaracterEspecial.test(contrasena)) {
+      retorno.push(`${baseMessage}no cuenta con caracteres especiales`);
+    }
+    const elementErrorContrasena = document.getElementById('errorContrasena');
+    if (elementErrorContrasena) {
+      elementErrorContrasena.innerHTML = '';
+      retorno.forEach(value => {
+        elementErrorContrasena.innerHTML += `<span>${value}</span><br>`;
+      })
+    }
+    return retorno;
+  }
+
 }

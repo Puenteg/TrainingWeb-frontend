@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { take } from 'rxjs';
+import { LoginService } from 'src/app/services/login.service';
 import { RutinasService } from 'src/app/services/rutinas.service';
 
 @Component({
@@ -17,7 +19,8 @@ export class CrearRutinasComponent {
     private fb: FormBuilder,
     private router: Router,
     private _rutinasSerives: RutinasService,
-    private aRouter: ActivatedRoute
+    private aRouter: ActivatedRoute,
+    private loginService: LoginService
   ) {
     this.rutinaForm = this.fb.group({
       nombre: [''],
@@ -28,10 +31,14 @@ export class CrearRutinasComponent {
       jueves: [''],
       viernes: [''],
       sabado: [''],
-      domingo: ['']
+      domingo: [''],
+      autor: ['']
+    });
+    loginService.getDataUser().pipe(take(1)).subscribe((next) => {
+      this.rutinaForm.get('autor')?.patchValue(next.usuario)
     });
     this.id = this.aRouter.snapshot.paramMap.get('id');
-    
+
   }
   createRutina() {
     const formData = new FormData();
@@ -44,6 +51,7 @@ export class CrearRutinasComponent {
     formData.append('viernes', this.rutinaForm.get('viernes')?.value)
     formData.append('sabado', this.rutinaForm.get('sabado')?.value)
     formData.append('domingo', this.rutinaForm.get('domingo')?.value)
+    formData.append('autor', this.rutinaForm.get('autor')?.value)
     if(this.imagen) {
       formData.append('imagen', this.imagen);
     }

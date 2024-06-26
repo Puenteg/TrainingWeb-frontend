@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, firstValueFrom } from 'rxjs';
 import { enviroment } from 'src/enviroments/enviroment';
 
 export interface DataUser {
+  usuario?: null | string;
   username?: null | string;
   nombre?: null | string;
   pwd?: null|string;
@@ -58,8 +59,8 @@ export class LoginService {
     localStorage.removeItem('dataUser')
   }
 
-  async validaCredenciales(data: {username: string, pwd: string}): Promise<any> {
-    console.info('validando información de :', data.username, ' con pwd: ', data.pwd)
+  async validaCredenciales(data: {usuario: string, pwd: string}): Promise<any> {
+    console.info('validando información de :', data.usuario, ' con pwd: ', data.pwd)
     // validaciones de logueo
     // peticion http para validar credenciales con
     const dataUser = await firstValueFrom<any>(this.httpClient.post(`${this,this._server}/api/usuario/valida_credenciales`, data))
@@ -82,7 +83,7 @@ export class LoginService {
     return this.dataUser?.value?.roles;
   }
 
-  getDataUser(): Observable<DataUser> {
+  getDataUser(): Observable<any> {
     return this.dataUser.asObservable();
   }
 

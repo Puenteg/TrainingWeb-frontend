@@ -5,6 +5,8 @@ import { EmpleadoService } from 'src/app/services/empleado.service';
 import { DietasServiceService } from 'src/app/services/dietas-service.service';
 import { Dietas } from 'src/app/models/dietas';
 import { enviroment } from 'src/enviroments/enviroment';
+import { LoginService } from 'src/app/services/login.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'dietas',
@@ -18,11 +20,15 @@ export class ListarEmpleadosComponent implements OnInit{
   Dietas = true;
   listDietas: any [] = [];
   mapaSitio = false;
+  dataUser: any = {};
 
   mostrarDieta: any;
 
-  constructor(private _empleadoService: EmpleadoService, private _dietasService: DietasServiceService) {
+  constructor(private _empleadoService: EmpleadoService, private _dietasService: DietasServiceService, private loginService: LoginService) {
     this.caragaDietas();
+    this.loginService.getDataUser().pipe(take(1)).subscribe({
+      next: (value) => this.dataUser = value
+    })
   }
 
   caragaDietas(): void {
@@ -95,6 +101,10 @@ export class ListarEmpleadosComponent implements OnInit{
 
   cerrarMapa() {
     this.mapaSitio = false;
+  }
+
+  coincideAutorConUser(autor: string): boolean {
+    return this.dataUser.usuario === autor;
   }
 
 }

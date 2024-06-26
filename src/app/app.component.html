@@ -73,18 +73,29 @@
                 <tbody>
                   <tr>
                     <td>
-                      <p>{{(nombrePerfil | async)?.nombre}}</p>
+                      <p>{{(nombrePerfil | async)?.usuario}}</p>
                     </td>
                   </tr>
                 </tbody>
               </table>
               <hr>
-              <a (click)="logOut()">Ver perfil</a>
+              <a (click)="showPerfil()">Ver perfil</a>
               <br>
               <a (click)="logOut()">Cerrar Sesion</a>
               <br>
               <hr>
               <a (click)="cerrar()">Ocultar</a>
+            </div>
+          </div>
+          <div class="options2" [hidden]="!isPerfilVisible">
+            <div class="options-body2">
+              <strong>{{(nombrePerfil | async).nombre}} {{(nombrePerfil | async).apellido}}</strong>
+              <p>
+                Tel: {{(nombrePerfil | async).telefono}}
+                <br>
+                  Correo: {{(nombrePerfil | async).email}}
+              </p>
+              <a (click)="hiddenPerfil()">Ocultar</a>
             </div>
           </div>
         </div>
@@ -125,7 +136,7 @@
                   <a class="nav-link" routerLink="/asignacion" *appRole="['normal','admin']">Trac</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" routerLink="/crear-recurso" *appRole="['normal']">Profesionales</a>
+                  <a class="nav-link" routerLink="/crear-recurso" *appRole="['normal']">(nombrePerfil | async)es</a>
                 </li>
                 <li>
                   <div class="box">

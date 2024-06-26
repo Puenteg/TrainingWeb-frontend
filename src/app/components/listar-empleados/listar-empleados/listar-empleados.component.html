@@ -29,8 +29,10 @@
                     clip-rule="evenodd" />
                 </svg>
               </a>
-              <button class="btn-delete" *appRole="['admin', 'nutriologo']"
-                (click)="eliminar(dietas._id)">Eliminar</button>
+              <div *appRole="['admin', 'nutriologo']">
+                <button class="btn-delete" *ngIf="coincideAutorConUser(dietas.autor)"
+                  (click)="eliminar(dietas._id)">Eliminar</button>
+              </div>
             </div>
           </div>
         </article>

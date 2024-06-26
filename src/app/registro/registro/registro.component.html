@@ -9,13 +9,22 @@
                     <div class="card-body text-center">
                         <h3>Registrate</h3>
                         <form class="mt-3" [formGroup]="empleadoForm" (ngSubmit)="crearEmpleado()">
+                          <div class="mb-3">
+                            <label for="marca">Usuario</label>
+                            <input type="text" formControlName="usuario" class="form-control"
+                                placeholder="Usuario" minlength="3" maxlength="20">
+                            <div class="text-danger"
+                                *ngIf="empleadoForm.get('usuario')?.hasError('required') && empleadoForm.get('usuario')?.touched">
+                                <span>El usuario <strong>ES OBLIGATORIO</strong></span>
+                            </div>
+                            </div>
                             <div class="mb-3">
-                                <label for="marca">Nombre de Usuario</label>
+                                <label for="marca">Nombre</label>
                                 <input type="text" formControlName="nombre" class="form-control"
-                                    placeholder="Nombre Usuario" minlength="3" maxlength="20">
+                                    placeholder="Nombre" minlength="3" maxlength="20">
                                 <div class="text-danger"
                                     *ngIf="empleadoForm.get('nombre')?.hasError('required') && empleadoForm.get('nombre')?.touched">
-                                    <span>El nombre de Usuario <strong>ES OBLIGATORIO</strong></span>
+                                    <span>El nombre <strong>ES OBLIGATORIO</strong></span>
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -40,32 +49,20 @@
                                 <label for="marca">Contraseña</label>
                                 <input type="password" formControlName="contraseña" class="form-control"
                                     placeholder="Ingresa una contraseña" minlength="8" maxlength="20">
-                                <div class="text-danger"
-                                    *ngIf="empleadoForm.get('contraseña')?.hasError('required') && empleadoForm.get('contraseña')?.touched">
-                                    <span>La contraseña <strong>ES OBLIGATORIA</strong></span>
+                                <div class="text-danger" *ngIf=" empleadoForm.get('contraseña')?.touched &&
+                                validaContrasenaSegura(empleadoForm.get('contraseña')?.value).length > 0">
+                                    <div id="errorContrasena"></div>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="marca">Confirma tu contraseña</label>
                                 <input type="password" formControlName="contraseña2" class="form-control"
                                     placeholder="Ingresa una contraseña" minlength="8" maxlength="20">
-                                <div class="text-danger"
+                                <!-- <div class="text-danger"
                                     *ngIf="empleadoForm.get('contraseña2')?.hasError('required') && empleadoForm.get('contraseña2')?.touched">
                                     <span>La contraseña <strong>ES OBLIGATORIA</strong></span>
-                                </div>
+                                </div> -->
                             </div>
-                            <!-- <div class="mb-3">
-                                <label for="marca">Número de Teléfono</label>
-                                <input type="text" formControlName="telefono" class="form-control"
-                                    placeholder="Ingresar número de Teléfono" maxlength="10">
-                                <div class="text-danger"
-                                    *ngIf="empleadoForm.get('telefono')?.hasError('required') && empleadoForm.get('telefono')?.touched">
-                                    <span>Ingresar <strong>NÚMERO DE TELÉFONO</strong></span>
-                                </div>
-                                <div class="text-danger" *ngIf="empleadoForm.get('telefono')?.hasError('pattern')">
-                                    <span>El número de teléfono debe contener solo números</span>
-                                </div>
-                            </div> -->
                             <div class="mb-3">
                                 <label for="rol">Seleccione el rol que desea tener</label>
                                 <div class="div-radio-button">
@@ -86,6 +83,32 @@
                             </div>
                             <div class="mb-3">
                             </div>
+                            <ng-container *ngIf="empleadoForm.get('rol')?.value === 'entrenador' || empleadoForm.get('rol')?.value === 'nutriologo'; then profesional;">
+                            </ng-container>
+                            <ng-template #profesional >
+                              <div class="mb-3">
+                                  <label for="marca">Número de Teléfono</label>
+                                  <input type="text" formControlName="telefono" class="form-control"
+                                      placeholder="Ingresar número de Teléfono" maxlength="10" required="true">
+                              </div>
+                              <div class="mb-3">
+                                <label for="marca">Descripción Corta</label>
+                                <input type="text" formControlName="descripcionCorta" class="form-control"
+                                    placeholder="Ingresar descripción corta" maxlength="50">
+                              </div>
+                              <div class="mb-3">
+                                <label for="marca">Descripción</label>
+                                <input type="text" formControlName="descripcion" class="form-control"
+                                    placeholder="Ingresar descripción corta" maxlength="150">
+                              </div>
+                              <div class="mb-3">
+                                <label for="marca">Imagen</label>
+                                <input type="file" (change)="onFileChange($event)" class="form-control"
+                                    placeholder="Seleccione la imagen...">
+                              </div>
+                            </ng-template>
+
+
                             <div class="mb-3">
                                 <button type="submit" id="aceptar" type="submit">Aceptar</button>
                                 <br>
