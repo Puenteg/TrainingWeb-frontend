@@ -244,3 +244,21 @@ button:hover{
   color: #fff023;
   cursor: pointer;
 }
+
+.sugerencias-flotantes {
+  border: 4px solid #fff023;
+  border-radius: 1.5rem;
+  position: sticky;
+  margin-left: 20px;
+  color: #fff023;
+}
+
+.sugerencias-flotantes ul li {
+  border: .5px solid #f6ff93;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-right: 25px;
+    padding-left: 7px;
+    padding-right: 7px;
+    background-color: #7f7f7f;
+}
