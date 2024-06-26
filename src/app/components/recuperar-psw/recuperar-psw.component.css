@@ -131,3 +131,13 @@ p {
     font-size: 1.1rem;
     color: #7f7f7f;
 }
+
+.logo{
+    position: absolute;
+    margin-top: 0;
+    margin-left: 0;
+    padding: 10px;
+}
+.logo img{
+    width: 150px;
+}

@@ -239,3 +239,14 @@ button a:hover{
     font-weight: bolder;
     padding-bottom: 2pc;
 }
+
+.logo {
+    position: absolute;
+    margin-top: 0;
+    margin-left: 0;
+    padding: 10px;
+}
+
+.logo img {
+    width: 150px;
+}
