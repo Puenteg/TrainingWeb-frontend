@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RutinasService } from 'src/app/services/rutinas.service';
 import { enviroment } from 'src/enviroments/enviroment';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { DataUser, LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -15,10 +15,15 @@ export class ListarRecursoComponent implements OnInit{
   mapaSitio = false;
   listRutinas : any [] = [];
   mostrarRutina: any;
-  nombrePerfil: Observable<DataUser>;
+  nombrePerfil: Observable<any>;
+  dataUser: any = {};
+
   constructor(private loginService: LoginService, private _rutinasService: RutinasService) {
     this.caragaRutinas();
     this.nombrePerfil = loginService.getDataUser();
+    this.loginService.getDataUser().pipe(take(1)).subscribe({
+      next: (value) => this.dataUser = value
+    })
   }
   caragaRutinas(): void {
     this._rutinasService.getRutina().then(
@@ -32,7 +37,7 @@ export class ListarRecursoComponent implements OnInit{
                 srcImage.src = `${enviroment.urlBackEnd}/${rutina.imagen}`;
               } else {
                 const srcImage: any = document.getElementById('image' + rutina._id);
-                srcImage.src = `${enviroment.urlBackEnd}/default.png`;
+                srcImage.src = `${enviroment.urlBackEnd}/default.webp`;
               }
             }, 250)
           });
@@ -84,8 +89,24 @@ export class ListarRecursoComponent implements OnInit{
     muestraMapa() {
     this.mapaSitio = true;
     }
-  
+
   cerrarMapa() {
     this.mapaSitio = false;
   }
+
+  coincideAutorConUser(autor: string): boolean {
+    return this.dataUser.usuario === autor;
+  }
+
+  eliminar(id: string) {
+    this._rutinasService.deleteRutina(id).subscribe({
+      next: (value) => {
+        alert('Eliminación exitosa');
+        this.caragaRutinas();
+      }, error: (error) => {
+
+      }
+    })
+  }
+
 }

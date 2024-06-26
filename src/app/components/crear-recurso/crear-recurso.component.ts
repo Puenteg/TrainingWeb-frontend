@@ -51,6 +51,9 @@ export class CrearRecursoComponent {
             if(profesional.imagen) {
               const srcImage: any = document.getElementById('imagen' + profesional._id);
               srcImage.src = `${enviroment.urlBackEnd}/${profesional.imagen}`;
+            } else {
+              const srcImage: any = document.getElementById('imagen' + profesional._id);
+              srcImage.src = `${enviroment.urlBackEnd}/default.webp`;
             }
           }, 250)
         });

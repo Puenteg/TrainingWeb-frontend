@@ -51,6 +51,7 @@ export class CrearRutinasComponent {
     formData.append('viernes', this.rutinaForm.get('viernes')?.value)
     formData.append('sabado', this.rutinaForm.get('sabado')?.value)
     formData.append('domingo', this.rutinaForm.get('domingo')?.value)
+    formData.append('autor', this.rutinaForm.get('autor')?.value)
     if(this.imagen) {
       formData.append('imagen', this.imagen);
     }

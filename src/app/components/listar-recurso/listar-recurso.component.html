@@ -31,6 +31,10 @@
                       clip-rule="evenodd" />
                   </svg>
                 </a>
+                <div *appRole="['admin', 'entrenador']">
+                  <button class="btn-delete" *ngIf="coincideAutorConUser(rutinas.autor)"
+                    (click)="eliminar(rutinas._id)">Eliminar</button>
+                </div>
               </div>
             </div>
           </article>

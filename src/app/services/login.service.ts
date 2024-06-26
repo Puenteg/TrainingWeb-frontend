@@ -83,7 +83,7 @@ export class LoginService {
     return this.dataUser?.value?.roles;
   }
 
-  getDataUser(): Observable<DataUser> {
+  getDataUser(): Observable<any> {
     return this.dataUser.asObservable();
   }
 

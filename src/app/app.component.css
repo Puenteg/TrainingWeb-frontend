@@ -36,7 +36,7 @@ a:hover:before {
 */
 a:hover{
     color:#e3d617;
-} 
+}
 /* header{
     margin: 0;
     padding: 0;
@@ -94,13 +94,13 @@ button:hover{
     color: #fff;
     border-radius: 5px;
     background-color: #fff023;
-    box-shadow: 0 0 5px #e3d617, 
-    0 0 25px #e3d617, 
+    box-shadow: 0 0 5px #e3d617,
+    0 0 25px #e3d617,
     0 0 50px #e3d617,
     0 0 100px #e3d617;
     transition: 0.3s;
 }
-*//* 
+*//*
 */
 .input {
     padding: 10px;
@@ -201,4 +201,46 @@ button:hover{
 .options-body a:hover{
     color: #fff023;
     cursor: pointer;
+}
+
+.options2{
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.options-body2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-right: 1pc;
+  background-color: #1f2329;
+  height:15vw;
+  width: 15vw;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 2;
+}
+
+.options-body2 p, .options-body2 strong{
+  color: #fff;
+  /* color: #fff;
+  font-size: 1rem;
+  line-height: 0.9;
+  text-align: left; */
+}
+
+.options-body2 a{
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.options-body2 a:hover{
+  color: #fff023;
+  cursor: pointer;
 }
