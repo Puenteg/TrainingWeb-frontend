@@ -257,6 +257,7 @@ button {
     transition: all 0.3s;
     border-bottom: 0px solid #bebed2;
     font-weight: bolder;
+    text-decoration: none;
 }
 input {
     width: 100%;
@@ -302,6 +303,14 @@ textarea{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-decoration: none;
+}
+footer a{
+    text-decoration: none;
+    color: #18181b;
+}
+footer a:hover{
+    color: #fff;
 }
 
 .social-icon,

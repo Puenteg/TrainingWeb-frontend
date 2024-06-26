@@ -12,18 +12,21 @@
             </div>
             <div class="col">
                 <h3>Alimentacion</h3>
-                <a routerLink="/dietas">Dietas</a>
+                <a *appRole="['nutriologo', 'usuario']" routerLink="/dietas">Dietas</a>
                 <br>
-                <a routerLink="/crear-dietas">Crear Dietas</a>
+                <a *appRole="['nutriologo']" routerLink="/crear-dietas">Crear Dietas</a>
             </div>
             <div class="col">
                 <h3>Ejercicio</h3>
-                <a routerLink="/rutinas">Rutinas</a>
+                <a *appRole="['entrenador', 'usuario']" routerLink="/rutinas">Rutinas</a>
+                <br>
+                <a *appRole="['entrenador']" routerLink="/crear-rutinas">Crear Rutinas</a>
             </div>
-            <div class="col">
+
+            <!--             <div class="col">
                 <h3>Progreso</h3>
                 <a routerLink="/trac">Trac</a>
-            </div>
+            </div> -->
             <div class="col">
                 <h3>Profesionales</h3>
                 <a routerLink="/profesionales">Profesionales</a>

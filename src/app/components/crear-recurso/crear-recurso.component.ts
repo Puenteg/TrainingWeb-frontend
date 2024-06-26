@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Recurso } from 'src/app/models/recurso';
+import { EmpleadoService } from 'src/app/services/empleado.service';
 import { RecursoService } from 'src/app/services/recurso.service';
+import { enviroment } from 'src/enviroments/enviroment';
 
 @Component({
   selector: 'profesionales',
@@ -18,10 +20,14 @@ export class CrearRecursoComponent {
   marcas: { nombre: string }[] = []; // Ajusta el tipo según la estructura real de tus objetos de departamento
   gamas: { tipo: string }[] = []; // Ajusta el tipo según la estructura real de tus objetos de departamento
   profesionales = true;
+
+  listProfesionales: any[]= [];
+
   constructor(private fb: FormBuilder,
     private router: Router,
     private _recursoService: RecursoService,
-    private aRouter: ActivatedRoute
+    private aRouter: ActivatedRoute,
+    private profesionalService: EmpleadoService
   ) {
     this.recursoForm = this.fb.group({
       numSerie: ['', Validators.required],
@@ -34,9 +40,25 @@ export class CrearRecursoComponent {
   }
 
   ngOnInit(): void {
-    this.esEditar();
-    this.loadMarcas();
-    this.loadGama();
+    // this.esEditar();
+    // this.loadMarcas();
+    // this.loadGama();
+    this.profesionalService.getProfesionales().then((success) => {
+      this.listProfesionales = success
+      setTimeout(() => {
+        this.listProfesionales.forEach((profesional: any) => {
+          setTimeout(() => {
+            if(profesional.imagen) {
+              const srcImage: any = document.getElementById('imagen' + profesional._id);
+              srcImage.src = `${enviroment.urlBackEnd}/${profesional.imagen}`;
+            } else {
+              const srcImage: any = document.getElementById('imagen' + profesional._id);
+              srcImage.src = `${enviroment.urlBackEnd}/default.webp`;
+            }
+          }, 250)
+        });
+      }, 500)
+    })
   }
   loadMarcas() {
     this._recursoService.obtenerMarca().subscribe(
